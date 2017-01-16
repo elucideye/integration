@@ -16,7 +16,7 @@ namespace mylib
     std::vector<int> MYLIB_EXPORT bar();
 #endif
 
-    void MYLIB_EXPORT crashsim(std::size_t n);
+    int MYLIB_EXPORT crashsim(int n);
 }
 
 #endif // MYLIB_MYLIB_HPP_
