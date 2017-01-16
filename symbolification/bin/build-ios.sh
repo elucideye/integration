@@ -10,6 +10,8 @@ fi
 
 TOOLCHAIN=ios-10-1-dep-8-0-hid-sections
 
+MYLIB_DIR="${PWD}/mylib/_framework/${TOOLCHAIN}"
+
 COMMANDS=(
     "--config=Release "
     "--verbose "
@@ -32,8 +34,6 @@ FRAMEWORK_ARGS=(
     cd mylib
     polly.py --toolchain ${TOOLCHAIN} ${FRAMEWORK_ARGS[*]} ${COMMANDS[*]} --identity "${MY_IOS_IDENTITY}" --install
 )
-
-MYLIB_DIR="${PWD}/mylib/_framework/ios-10-1-dep-8-0-hid-sections"
 
 ( # Emulate 3rd-party consumer of shared library:
     cd yourapp

@@ -2,14 +2,24 @@
 
 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon-hid-sections
 
-( # Build shared library:
-    cd MyLib
-    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --reconfig --clear --config=Release --verbose --install
+MYLIB_DIR="${PWD}/mylib/_install/${TOOLCHAIN}/lib/cmake/myLib"
+
+ls ${MYLIB_DIR}
+
+COMMANDS=(
+    "--config=Release "
+    "--verbose "
+    "--jobs 8 "
+    "--reconfig "
+    "--clear "
 )
 
-MY_DIR=${PWD}/MyLib/_install/android-ndk-r10e-api-19-armeabi-v7a-neon-hid-sections/lib/cmake/MyLib
+( # Build shared library:
+    cd mylib
+    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --install
+)
 
 ( # Emulate 3rd-party consumer of shared library:
-    cd MyApp
-    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --reconfig --clear --config=Release --verbose --fwd "MY_DIR=${MY_DIR}"
+    cd yourapp
+    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --fwd "MYLIB_DIR=${MYLIB_DIR}"
 )
