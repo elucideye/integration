@@ -35,6 +35,7 @@ _logs/*
 _builds/*
 _install/*
 _framework/*
+_frameworks/*
 _os/*
 _archives/*
 
