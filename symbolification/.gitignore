@@ -1,0 +1,65 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Hunter/polly
+
+_builds
+_logs/*
+_builds/*
+_install/*
+_framework/*
+_os/*
+_archives/*
+
+yourapp/_builds/*
+yourapp/_install/*
+
+# Store releases
+releases/*
+
+# Mac OS X
+.DS_Store
+
+# Emacs
+*.*~
+*~
+
+# TAGS
+TAGS
+
+# Common backup
+*.orig
+
+# Matlab
+*.mexmaci64
+
+# Private password
+passwords.cmake
+
