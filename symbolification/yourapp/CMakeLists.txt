@@ -35,7 +35,7 @@ else()
 
   add_executable(yourapp yourapp.cpp)
   
-  set(MYLIB_DIR "${MY_DIR}")
+  set(mylib_DIR "${MYLIB_DIR}")
   find_package(mylib CONFIG REQUIRED)
   target_link_libraries(yourapp mylib::mylib)
   
