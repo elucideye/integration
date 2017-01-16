@@ -40,12 +40,19 @@ endif("${isSystemDir}" STREQUAL "-1")
 # Need to construct compile time check for functionality below
 if(ANDROID)
 
+  set_target_properties(
+    mylib
+    PROPERTIES
+    CXX_VISIBILITY_PRESET hidden
+    VISIBILITY_INLINES_HIDDEN ON
+    )
+
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force debug symbols
   strip_and_save_debug_symbols(${lib_name})
 
 elseif(XCODE)
 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force .dSYM
+  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force .dSYM
   set(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE No)
   
   set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo")  
@@ -53,6 +60,28 @@ elseif(XCODE)
   set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT[variant=Release] "dwarf-with-dsym")
   set(CMAKE_XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS "YES")
   set(CMAKE_XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS[variant=Release] "YES")
+
+  set_target_properties(${lib_name}
+    PROPERTIES
+    XCODE_ATTRIBUTE_COPY_PHASE_STRIP "YES"
+    XCODE_ATTRIBUTE_STRIP_INSTALLED_PRODUCT "YES"
+    XCODE_ATTRIBUTE_STRIP_STYLE "non-global"
+    XCODE_ATTRIBUTE_STRIPFLAGS "-x -u -r"
+    XCODE_ATTRIBUTE_DEAD_CODE_STRIPPING "YES"
+    XCODE_ATTRIBUTE_DEPLOYMENT_POSTPROCESSING "YES"
+    # Note: Using this option in combination with thread_local and shared libraries crashes
+    # the linker step with the following error:
+    #
+    # ld: Assertion failed: (0 && "need to handle arm64 -r reloc"), function encodeSectionReloc,
+    # file /Library/Caches/com.apple.xbs/Sources/ld64/ld64-264.3.102/src/ld/LinkEditClassic.hpp, line 1907.
+    #
+    # This should can be enabled optionally for modules that do not require thread_local.
+    XCODE_ATTRIBUTE_GENERATE_MASTER_OBJECT_FILE "YES" # "Perform Single-Object Prelink"
+
+    # Visibility
+    XCODE_ATTRIBUTE_GCC_INLINES_ARE_PRIVATE_EXTERN YES
+    XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
+  )
 
 endif()
 
@@ -64,15 +93,6 @@ target_include_directories(
   PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
   "$<INSTALL_INTERFACE:include>"
-)
-
-set_target_properties(
-  mylib
-    PROPERTIES
-    CXX_VISIBILITY_PRESET hidden
-    VISIBILITY_INLINES_HIDDEN ON
-    XCODE_ATTRIBUTE_GCC_INLINES_ARE_PRIVATE_EXTERN YES
-    XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
 )
 
 set(config_install_dir "lib/cmake/${PROJECT_NAME}")

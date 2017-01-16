@@ -32,7 +32,7 @@ FRAMEWORK_ARGS=(
 
 ( # Build shared library:
     cd mylib
-    polly.py --toolchain ${TOOLCHAIN} ${FRAMEWORK_ARGS[*]} ${COMMANDS[*]} --identity "${MY_IOS_IDENTITY}" --install
+    polly.py --toolchain ${TOOLCHAIN} ${FRAMEWORK_ARGS[*]} ${COMMANDS[*]} --identity "${MY_IOS_IDENTITY}" --install # --open --nobuild
 )
 
 ( # Emulate 3rd-party consumer of shared library:
