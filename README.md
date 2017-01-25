@@ -23,9 +23,10 @@ The end-to-end build is automated, but running currently requires manually addin
 5. Xcode: Target = yourapp General -> Embed Binaries -> + -> mylib.framework 
 ![xcode_embed_binaries](https://cloud.githubusercontent.com/assets/554720/22299399/f1f76300-e2f1-11e6-80b1-6f838caed224.png)
 6. Xcode: Select iPhone device and run `yourapp` target
-
-
-In Xcode 8.1 (at least) the crash logs can be viewed directly via: Xcode -> Window -> Devices -> Your iPhone -> View Device Logs -> This Device -> yourapp.
+![xcode_hello_from_yourapp](https://cloud.githubusercontent.com/assets/554720/22301327/acb57082-e2f8-11e6-98f6-012702652b1a.png)
+7. Xcode: Stop the app.  You can run again from the installed icon.
+8. Xcode: Window -> Devices -> Your iPhone -> [View Device Logs] -> This Device -> `yourapp`
+![xcode_device_log](https://cloud.githubusercontent.com/assets/554720/22301708/f58c3f10-e2f9-11e6-9192-fe049b2cce5a.png)
 
 You can select and right-click a log, and a dialog will open asking you for:
 * Delete log
