@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+_logs
+_archives
+_install
+_framework
