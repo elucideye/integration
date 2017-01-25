@@ -30,7 +30,7 @@ The end-to-end build is automated, but running currently requires manually addin
 9. (Cont) right-click -> export -> save as: "your_app_log1"
 ![xcode_device_log_export](https://cloud.githubusercontent.com/assets/554720/22302236/e368c6bc-e2fb-11e6-8a46-5660459864ce.png)
 10. Shell: `ls ~/Downloads/your_app_log1.crash`
-11. [See: Following https://possiblemobile.com/2015/03/symbolicating-your-ios-crash-reports/] Locate `symbolicatecrash` app `/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash` and set path accordingly`
+11. [See: Following https://possiblemobile.com/2015/03/symbolicating-your-ios-crash-reports/] Locate `symbolicatecrash` app `/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash` and set path accordingly
 ```
 export PATH="${PATH}:/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/"
 export DEVELOPER_DIR=/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/Developer
