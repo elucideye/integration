@@ -27,6 +27,9 @@ The end-to-end build is automated, but running currently requires manually addin
 7. Xcode: Stop the app.  You can run again from the installed icon.
 8. Xcode: Window -> Devices -> Your iPhone -> [View Device Logs] -> This Device -> `yourapp`
 ![xcode_device_log](https://cloud.githubusercontent.com/assets/554720/22301708/f58c3f10-e2f9-11e6-9192-fe049b2cce5a.png)
+9. (Cont) right-click -> export -> save as: "your_app_log1"
+![xcode_device_log_export](https://cloud.githubusercontent.com/assets/554720/22302236/e368c6bc-e2fb-11e6-8a46-5660459864ce.png)
+10. Shell: `ls ~/Downloads/your_app_log1.crash`
 
 You can select and right-click a log, and a dialog will open asking you for:
 * Delete log
