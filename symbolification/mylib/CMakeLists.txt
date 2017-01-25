@@ -52,7 +52,7 @@ if(ANDROID)
 
 elseif(XCODE)
 
-  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force .dSYM
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force .dSYM
   set(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE No)
   
   set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo")  
@@ -63,6 +63,7 @@ elseif(XCODE)
 
   set_target_properties(${lib_name}
     PROPERTIES
+    
     XCODE_ATTRIBUTE_COPY_PHASE_STRIP "YES"
     XCODE_ATTRIBUTE_STRIP_INSTALLED_PRODUCT "YES"
     XCODE_ATTRIBUTE_STRIP_STYLE "non-global"

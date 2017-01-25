@@ -4,11 +4,9 @@
 
 int main()
 {
-    std::cout << "hello from baz" << std::endl;
-
+    std::cout << "hello from yourapp!" << std::endl;
+    
     mylib::bar();
     mylib::crashsim(100);
     mylib::bar();
-    
-    std::cout << "FOBAR" << std::endl;
 }

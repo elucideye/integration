@@ -17,10 +17,8 @@ if(XCODE)
     yourapp
     PROPERTIES
     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/plist.in"  
-    XCODE_ATTRIBUTE_PRODUCT_NAME
-    "yourapp"
-    XCODE_ATTRIBUTE_BUNDLE_IDENTIFIER
-    "com.example.yourapp"
+    XCODE_ATTRIBUTE_PRODUCT_NAME "yourapp"
+    XCODE_ATTRIBUTE_BUNDLE_IDENTIFIER  "com.example.integration.yourapp"
     XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2" # iPhone/iPad    
     )
 
