@@ -13,7 +13,7 @@ https://www.raywenderlich.com/23704/demystifying-ios-application-crash-logs
 
 ## iOS
 
-The end-to-end build is automated, but running currently requires manually adding the `mylib.framework` to the `yourapp` project before runnign.
+The end-to-end build is automated, but running currently requires manually adding the `mylib.framework` to the `yourapp` project before running.
 
 1. Shell: cd integration/symbolification
 2. Shell: export MY_IOS_IDENTITY="iPhone Developer: Your Name (XXXXXXXXXX)" # insert real values here
