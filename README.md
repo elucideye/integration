@@ -30,12 +30,18 @@ The end-to-end build is automated, but running currently requires manually addin
 9. (Cont) right-click -> export -> save as: "your_app_log1"
 ![xcode_device_log_export](https://cloud.githubusercontent.com/assets/554720/22302236/e368c6bc-e2fb-11e6-8a46-5660459864ce.png)
 10. Shell: `ls ~/Downloads/your_app_log1.crash`
+11. [See: Following https://possiblemobile.com/2015/03/symbolicating-your-ios-crash-reports/] Locate `symbolicatecrash` app `/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash` and set path accordingly`
+```
+export PATH="${PATH}:/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/"
+export DEVELOPER_DIR=/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/Developer
+```
+12. Place your .crash, and .dSYM files in the same directory and run:
 
-You can select and right-click a log, and a dialog will open asking you for:
-* Delete log
-* Export log
-* Re-Symbolicate log
-
-Choose to "Export Log" and provide a filename.  By default, this will generate a timestampled filename with a `.crash` extension that looks somethin glike this: `yourapp  1-16-17, 4-29 PM.crash`.
+```
+tar zcvf staging.tgz -C ${INTEGRATION}/symbolification/mylib/_builds/ios-10-1-dep-8-0-hid-sections/Release-iphoneos/ libmylib.dylib.dSYM 
+tar zxvf staging.tgz
+cp ${HOME}/Downloads/your_app_log1.crash /tmp/
+symbolicatecrash your_app_log1.crash > your_app_log1.txt
+```
 
 
