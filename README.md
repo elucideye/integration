@@ -36,7 +36,6 @@ export PATH="${PATH}:/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/Shar
 export DEVELOPER_DIR=/Applications/develop/ide/xcode/8.1/Xcode.app/Contents/Developer
 ```
 12. Place your .crash, and .dSYM files in the same directory and run:
-
 ```
 tar zcvf staging.tgz -C ${INTEGRATION}/symbolification/mylib/_builds/ios-10-1-dep-8-0-hid-sections/Release-iphoneos/ libmylib.dylib.dSYM 
 tar zxvf staging.tgz
