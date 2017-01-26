@@ -53,7 +53,7 @@ if(ANDROID)
 elseif(XCODE)
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") # adding -g is required to force .dSYM
-  set(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE No)
+  set(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE "NO")
   
   set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo")  
   set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym")
