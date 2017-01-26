@@ -21,5 +21,10 @@ COMMANDS=(
 
 ( # Emulate 3rd-party consumer of shared library:
     cd yourapp
-    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --fwd "MYLIB_DIR=${MYLIB_DIR}"
+    polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --fwd "MYLIB_DIR=${MYLIB_DIR}" --install
 )
+
+adb shell "mkdir -p /data/local/tmp/work"
+adb push "yourapp/_install/${TOOLCHAIN}/bin/yourapp" /data/local/tmp/work
+adb push "yourapp/_install/${TOOLCHAIN}/lib/libmylib.so" /data/local/tmp/work
+adb shell "cd /data/local/tmp/work && chmod 755 yourapp && export LD_LIBRARY_PATH=\${PWD} && ./yourapp"
