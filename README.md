@@ -31,6 +31,8 @@ The end-to-end build is automated, but running currently requires manually addin
 
 See: Following https://possiblemobile.com/2015/03/symbolicating-your-ios-crash-reports/ 
 
+###
+
 Backup manual approach for embedding frameworks (currently performed by CMake and should not be required:)
 1. Xcode: File -> Add Files To Your App : `mylib/_framework/ios-10-1-dep-8-0-hid-sections/mylib.framework`
 ![xcode_add_files](https://cloud.githubusercontent.com/assets/554720/22299497/4e0e74c6-e2f2-11e6-903f-f9fac607b746.png)
