@@ -20,11 +20,11 @@ set(CMAKE_SKIP_BUILD_RPATH  FALSE)
 # (but later on when installing)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
-set(DRISHTI_ORIGIN "$ORIGIN")
+set(MYLIB_ORIGIN "$ORIGIN")
 if (APPLE)
-  set(DRISHTI_ORIGIN "@loader_path")
+  set(MYLIB_ORIGIN "@loader_path")
 endif()
-set(CMAKE_INSTALL_RPATH "${DRISHTI_ORIGIN}/../lib:${DRISHTI_ORIGIN}/")
+set(CMAKE_INSTALL_RPATH "${MYLIB_ORIGIN}/../lib:${MYLIB_ORIGIN}/")
 
 # add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
