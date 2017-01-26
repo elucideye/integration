@@ -41,8 +41,13 @@ FRAMEWORK_ARGS=(
     polly.py --toolchain ${TOOLCHAIN} ${COMMANDS[*]} --fwd "MYLIB_DIR=${MYLIB_DIR}" --open
 )
 
-echo "1) File -> Add Files To Your App : mylib/_framework/${TOOLCHAIN}/mylib.framework"
-echo "2) Target = yourapp; General -> Embed Binaries -> + -> mylib.framework"
-echo "Run... create crash"
-echo "See: http://stackoverflow.com/a/39714542"
+#git clone https://github.com/phonegap/ios-deploy.git
+#cd ios-deploy && xcodebuild && npm install --unsafe-perm=true --allow-root -g ios-deploy
+
+# Be sure to use system python for ios-deploy/fruitstrap
+PATH="/usr/bin/:${PATH}"
+app_name=yourapp/_builds/${TOOLCHAIN}/Release-iphoneos/yourapp.app
+bundle_id=com.example.integration.yourapp
+ios-deploy --justlaunch --bundle ${app_name} --no-wifi
+
 
