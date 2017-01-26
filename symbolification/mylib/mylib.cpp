@@ -81,7 +81,7 @@ namespace mylib
 
             void crash(int n)
             {
-                crashsim(n);
+                private_crashsim(n);
             }
 
         protected:
