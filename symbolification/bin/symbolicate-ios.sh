@@ -2,6 +2,9 @@
 
 set -e
 
+# Includes
+. bin/ios-toolchain.sh
+
 CRASH_LOG=$1
 
 if [ -z "${CRASH_LOG}" ]; then

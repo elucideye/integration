@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# must be run from root folder:
+set -e
+
+# Includes
+. bin/ios-toolchain.sh
 
 # MY_IOS_IDENTITY="iPhone Developer: You Name (XXXXXXXXXX)"
 
@@ -8,8 +11,6 @@ if [ -z "${MY_IOS_IDENTITY}" ]; then
     echo 2>&1 "Must have MY_IOS_IDENTITY set"
     exit 1
 fi
-
-TOOLCHAIN=ios-10-1-dep-8-0-hid-sections
 
 MYLIB_DIR="${PWD}/mylib/_framework/${TOOLCHAIN}"
 
