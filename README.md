@@ -43,6 +43,8 @@ Stack frame #03 pc 00003880  /data/local/tmp/work/yourapp
 
 ## iOS
 
+Note: If the `*.crash` file is retrieved on the same machine used to build `libmylib.framework`, then Xcode magically resymbolicates the file for you.  It seems there is some behind the scenes book-keeping occurring in Xcode.  I was eventually able to test this end-to-end process properly by downloading the raw `*.crash` log file on a different machine, and then moving it back to the development machine.  This wasn't obvious at first, however CMake is stripping teh shared framework properly.
+
 The end-to-end build + test should run automatically.  The `mylib.framework` framework is copied to`yourapp` in CMakeLists.txt and the final `yourapp.app` is launched on the device using `ios-deploy`. If you experience trouble, or the framework isn't inserted properly, follow the (optional) instructions below for adding the framework manually.  (I've added the manual instructions since the framework embedding is somewhat non-standarda (there is no `XCODE_ATTRIBUTE_*` property to control this is CMake, so I don't know how durable this is -- the manual process should always work).  For simplicity, all scripts below should be run from the top level symbolification directory as follows: `./bin/some-script-name.sh`.
 
 TODO: Retrieve *.crash file programmatically?
@@ -53,7 +55,7 @@ TODO: Retrieve *.crash file programmatically?
 4. Shell: `./bin/build-ios.sh` # build mylib.framework, yourapp.app+mylib.framework and launch w/ ios-deploy
 5. Xcode: Window -> Devices -> Your iPhone -> [View Device Logs] -> This Device -> `yourapp`
 ![xcode_device_log](https://cloud.githubusercontent.com/assets/554720/22301708/f58c3f10-e2f9-11e6-9192-fe049b2cce5a.png)
-6. (Cont) right-click -> export -> save as: "your_app_log1"
+6. (Cont) right-click -> export -> save as: "your_app_log1". : # see not above about retrieving crash logs on a different machine
 ![xcode_device_log_export](https://cloud.githubusercontent.com/assets/554720/22302236/e368c6bc-e2fb-11e6-8a46-5660459864ce.png)
 8. Shell: `./bin/symbolicate-ios.sh ${HOME}/Downloads/your_app_log1.crash  > /tmp/symbolicated.txt` # read this script for further details on the process
 
