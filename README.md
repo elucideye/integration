@@ -1,7 +1,7 @@
 # integration
 Project integration and testing
 
-Lineage: https://github.com/forexample/ios-dynamic-framework sample by Ruslan Baratove.
+Lineage: https://github.com/forexample/ios-dynamic-framework sample by Ruslan Baratov.
 Includes updates for resymbolification tasks.
 
 # Quick start:
