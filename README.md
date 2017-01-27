@@ -23,6 +23,8 @@ The end-to-end build + test should run automatically.  The `mylib.framework` fra
 
 See: Following https://possiblemobile.com/2015/03/symbolicating-your-ios-crash-reports/ 
 
+You are done.  Read the following sections as needed.
+
 # Backup manual approach for embedding frameworks (currently performed by CMake and should not be required:)
 
 1. Xcode: File -> Add Files To Your App : `mylib/_framework/ios-10-1-dep-8-0-hid-sections/mylib.framework`
